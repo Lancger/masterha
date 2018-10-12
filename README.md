@@ -284,6 +284,8 @@ yum remove -y mha4mysql-node-0.58-0.el7.centos.noarch
 
 ### 七、切换步骤记录
 ```
+systemctl restart mysqld
+
 mysql -uroot -p123456 -h127.0.0.1 -P3306 < /tmp/all.sql
 
 GRANT REPLICATION SLAVE ON *.* TO 'repl'@'192.168.56.%' IDENTIFIED BY 'repl';
@@ -306,9 +308,6 @@ mysqldump -uroot -p123456 -h127.0.0.1 -P3306 --all-databases --triggers --routin
 scp /tmp/all.sql 192.168.56.20:/tmp/
 
 scp /tmp/all.sql 192.168.56.30:/tmp/
-
-
-systemctl restart mysqld
 
 tail -100f /var/log/mysqld.log
 
