@@ -1,0 +1,32 @@
+#!/usr/bin/env perl
+use strict;
+our $proxy_ip1="192.168.56.131";
+our $proxy_ip2="192.168.56.132";
+our $proxy_home="/usr/local/proxysql";
+our $ssh_user="root";
+our $ssh_port="22";
+
+
+sub start_vip() {
+   my $orig_master_ip=$_[0];
+   my $new_master_ip=$_[1];
+   my $online_node="$proxy_home/bin/set_server.sh $new_master_ip online";
+   `ping -W 1 -c 1 $proxy_ip1 && ssh -p $ssh_port $ssh_user\@$proxy_ip1 \" $online_node \"`;
+   `ping -W 1 -c 1 $proxy_ip2 && ssh -p $ssh_port $ssh_user\@$proxy_ip2 \" $online_node \"`;
+}
+
+sub stop_vip() {
+   my $orig_master_ip=$_[0];
+   my $offline_node="$proxy_home/bin/set_server.sh $orig_master_ip offline_hard";
+   `ping -W 1 -c 1 $proxy_ip1 && ssh -p $ssh_port $ssh_user\@$proxy_ip1 \" $offline_node  \"`;
+   `ping -W 1 -c 1 $proxy_ip2 && ssh -p $ssh_port $ssh_user\@$proxy_ip2 \" $offline_node  \"`;
+}
+
+sub stop_vip_soft() {
+   my $orig_master_ip=$_[0];
+   my $offline_node="$proxy_home/bin/set_server.sh $orig_master_ip offline_soft";
+   `ping -W 1 -c 1 $proxy_ip1 && ssh -p $ssh_port $ssh_user\@$proxy_ip1 \" $offline_node  \"`;
+   `ping -W 1 -c 1 $proxy_ip2 && ssh -p $ssh_port $ssh_user\@$proxy_ip2 \" $offline_node  \"`;
+}
+
+1;
