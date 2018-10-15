@@ -311,6 +311,7 @@ scp /tmp/all.sql 192.168.56.20:/tmp/
 scp /tmp/all.sql 192.168.56.30:/tmp/
 
 tail -100f /var/log/mysqld.log
+mysql -uroot -p123456 < /tmp/all.sql
 
 mysql -uroot -p123456
 stop slave;
