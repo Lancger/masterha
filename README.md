@@ -292,6 +292,7 @@ GRANT REPLICATION SLAVE ON *.* TO 'repl'@'192.168.56.%' IDENTIFIED BY 'repl';
 GRANT REPLICATION SLAVE ON *.* TO 'repl'@'%' IDENTIFIED BY 'repl';
 
 FLUSH TABLES WITH READ LOCK;
+
 mysql> SHOW MASTER STATUS;
 +------------------+----------+--------------+--------------------------+-------------------+
 | File             | Position | Binlog_Do_DB | Binlog_Ignore_DB         | Executed_Gtid_Set |
