@@ -285,13 +285,13 @@ systemctl restart mysqld
 
 mysql -uroot -p123456 -h127.0.0.1 -P3306 < /tmp/all.sql
 
-GRANT REPLICATION SLAVE ON *.* TO 'root'@'192.168.56.%' IDENTIFIED BY '123456';
-GRANT REPLICATION SLAVE ON *.* TO 'root'@'%' IDENTIFIED BY '123456';
+mysql -uroot -p123456 -e "GRANT REPLICATION SLAVE ON *.* TO 'root'@'192.168.56.%' IDENTIFIED BY '123456';"
+mysql -uroot -p123456 -e "GRANT REPLICATION SLAVE ON *.* TO 'root'@'%' IDENTIFIED BY '123456';"
 
-GRANT REPLICATION SLAVE ON *.* TO 'repl'@'192.168.56.%' IDENTIFIED BY 'repl';
-GRANT REPLICATION SLAVE ON *.* TO 'repl'@'%' IDENTIFIED BY 'repl';
+mysql -uroot -p123456 -e "GRANT REPLICATION SLAVE ON *.* TO 'repl'@'192.168.56.%' IDENTIFIED BY 'repl';"
+mysql -uroot -p123456 -e "GRANT REPLICATION SLAVE ON *.* TO 'repl'@'%' IDENTIFIED BY 'repl';"
 
-FLUSH TABLES WITH READ LOCK;
+mysql -uroot -p123456 -e "FLUSH TABLES WITH READ LOCK;"
 
 mysql> SHOW MASTER STATUS;
 +------------------+----------+--------------+--------------------------+-------------------+
@@ -301,7 +301,7 @@ mysql> SHOW MASTER STATUS;
 +------------------+----------+--------------+--------------------------+-------------------+
 1 row in set (0.00 sec)
 
-show grants for repl@"%";
+mysql -uroot -p123456 -e "show grants for repl@"%";"
 
 mysqldump -uroot -p123456 -h127.0.0.1 -P3306 --all-databases --triggers --routines --events >/tmp/all.sql
 
