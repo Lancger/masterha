@@ -287,9 +287,9 @@ mysql -uroot -p123456 -h127.0.0.1 -P3306 < /tmp/all.sql
 
 mysql -uroot -p123456 -e "GRANT REPLICATION SLAVE ON *.* TO 'root'@'192.168.56.%' IDENTIFIED BY '123456';"
 mysql -uroot -p123456 -e "GRANT REPLICATION SLAVE ON *.* TO 'root'@'%' IDENTIFIED BY '123456';"
-
 mysql -uroot -p123456 -e "GRANT REPLICATION SLAVE ON *.* TO 'repl'@'192.168.56.%' IDENTIFIED BY 'repl';"
 mysql -uroot -p123456 -e "GRANT REPLICATION SLAVE ON *.* TO 'repl'@'%' IDENTIFIED BY 'repl';"
+mysql -uroot -p123456 -e "flush privileges;"
 
 mysql -uroot -p123456 -e "FLUSH TABLES WITH READ LOCK;"
 
