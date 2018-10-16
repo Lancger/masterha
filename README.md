@@ -301,13 +301,14 @@ mysql> SHOW MASTER STATUS;
 +------------------+----------+--------------+--------------------------+-------------------+
 1 row in set (0.00 sec)
 
-
 show grants for repl@"%";
 
 mysqldump -uroot -p123456 -h127.0.0.1 -P3306 --all-databases --triggers --routines --events >/tmp/all.sql
 
-scp /tmp/all.sql 192.168.56.20:/tmp/
+#解除锁表操作
+UNLOCK TABLES;
 
+scp /tmp/all.sql 192.168.56.20:/tmp/
 scp /tmp/all.sql 192.168.56.30:/tmp/
 
 tail -100f /var/log/mysqld.log
