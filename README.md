@@ -293,13 +293,13 @@ mysql -uroot -p123456 -e "flush privileges;"
 
 mysql -uroot -p123456 -e "FLUSH TABLES WITH READ LOCK;"
 
-mysql> SHOW MASTER STATUS;
+mysql -uroot -p123456 -e "SHOW MASTER STATUS;"
+Warning: Using a password on the command line interface can be insecure.
 +------------------+----------+--------------+--------------------------+-------------------+
 | File             | Position | Binlog_Do_DB | Binlog_Ignore_DB         | Executed_Gtid_Set |
 +------------------+----------+--------------+--------------------------+-------------------+
-| mysql-bin.000019 |      154 |              | mysql,information_schema |                   |
+| mysql-bin.000032 |     1167 |              | mysql,information_schema |                   |
 +------------------+----------+--------------+--------------------------+-------------------+
-1 row in set (0.00 sec)
 
 mysql -uroot -p123456 -e "show grants for repl@"%";"
 
