@@ -318,15 +318,12 @@ CHANGE MASTER TO MASTER_HOST='192.168.56.10',MASTER_USER='repl',MASTER_PASSWORD=
 start slave;
 exit
 
-
 mysql -uroot -p123456 -e "show slave hosts;"
-
 
 rm -rf /etc/masterha
 
 scp -rp /etc/masterha 192.168.56.10:/etc/
 scp -rp /etc/masterha 192.168.56.20:/etc/
-
 
 mysql -uroot -p123456 -e "show grants for repl@'%';"
 
