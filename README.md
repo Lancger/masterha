@@ -285,6 +285,9 @@ systemctl restart mysqld
 
 mysql -uroot -p123456 -h127.0.0.1 -P3306 < /tmp/all.sql
 
+GRANT REPLICATION SLAVE ON *.* TO 'root'@'192.168.56.%' IDENTIFIED BY '123456';
+GRANT REPLICATION SLAVE ON *.* TO 'root'@'%' IDENTIFIED BY '123456';
+
 GRANT REPLICATION SLAVE ON *.* TO 'repl'@'192.168.56.%' IDENTIFIED BY 'repl';
 GRANT REPLICATION SLAVE ON *.* TO 'repl'@'%' IDENTIFIED BY 'repl';
 
