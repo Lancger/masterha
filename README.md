@@ -301,7 +301,7 @@ mysql -uroot -p123456 -e "SHOW MASTER STATUS;"
 | mysql-bin.000032 |     1167 |              | mysql,information_schema |                   |
 +------------------+----------+--------------+--------------------------+-------------------+
 
-mysql -uroot -p123456 -e "show grants for repl@"%";"
+mysql -uroot -p123456 -e "show grants for repl@'%';"
 
 mysqldump -uroot -p123456 -h127.0.0.1 -P3306 --all-databases --triggers --routines --events >/tmp/all.sql
 
