@@ -255,9 +255,6 @@ EOF
 
 ```
     
- 
-
-
 ### 六、查看软件包的安装位置
 
 ```
@@ -306,7 +303,7 @@ show grants for repl@"%";
 mysqldump -uroot -p123456 -h127.0.0.1 -P3306 --all-databases --triggers --routines --events >/tmp/all.sql
 
 #解除锁表操作
-UNLOCK TABLES;
+mysql -uroot -p123456 -e "UNLOCK TABLES;"
 
 scp /tmp/all.sql 192.168.56.20:/tmp/
 scp /tmp/all.sql 192.168.56.30:/tmp/
