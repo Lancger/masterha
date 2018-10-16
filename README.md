@@ -294,7 +294,7 @@ mysql -uroot -p123456 -e "flush privileges;"
 mysql -uroot -p123456 -e "FLUSH TABLES WITH READ LOCK;"
 
 mysql -uroot -p123456 -e "SHOW MASTER STATUS;"
-Warning: Using a password on the command line interface can be insecure.
+#Warning: Using a password on the command line interface can be insecure.
 +------------------+----------+--------------+--------------------------+-------------------+
 | File             | Position | Binlog_Do_DB | Binlog_Ignore_DB         | Executed_Gtid_Set |
 +------------------+----------+--------------+--------------------------+-------------------+
