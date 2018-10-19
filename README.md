@@ -286,6 +286,8 @@ systemctl restart mysqld
 #首次使用vip高可用需要在master手动绑定下vip
 /sbin/ifconfig eth0:2 192.168.56.200/24
 
+/sbin/ifconfig eth0:2 down
+
 mysql -uroot -p123456 -h127.0.0.1 -P3306 < /tmp/all.sql
 
 mysql -uroot -p123456 -e "GRANT ALL PRIVILEGES ON *.* TO 'root'@'192.168.56.%' IDENTIFIED BY '123456';"
