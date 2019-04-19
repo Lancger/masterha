@@ -52,6 +52,9 @@ EOF
 4、配置密钥ssh(所有主机各配置相同操作)
 ssh-keygen -t rsa 
 
+注：在配置ssh免密码登录的时候，需要注意/root/.ssh的权限需要为700，然后authorized_keys的权限为600
+chmod 600 authorized_keys
+
 在所有主机都必须拷贝密钥于其他主机
 for i in mha_node1 mha_node2 mha_manager; do ssh-copy-id $i; done
 
